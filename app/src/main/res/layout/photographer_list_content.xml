@@ -29,6 +29,7 @@
             android:id="@+id/id_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/main"
             android:text="jjhhhhh"
             android:textAppearance="?attr/textAppearanceListItem" />
 
@@ -36,6 +37,9 @@
             android:id="@+id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/textfc"
+            android:fontFamily="@font/attent"
+            android:textSize="20sp"
             android:text="kkkkk"
             android:textAppearance="?attr/textAppearanceListItem" />
     </LinearLayout>

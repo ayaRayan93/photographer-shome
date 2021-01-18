@@ -1,6 +1,8 @@
 package com.example.myapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +11,12 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.model.Photographer;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class PhotographerAdapter  extends RecyclerView.Adapter<PhotographerAdapter.ViewHolder> {
@@ -42,10 +46,10 @@ public class PhotographerAdapter  extends RecyclerView.Adapter<PhotographerAdapt
                 @Override
                 public void onClick(View v) {
 
-                      /*  Context context2 = v.getContext();
-                        Intent intent = new Intent(context2, DetailsActivity.class);
-                        intent.putExtra(DetailsFragment.ARG_ITEM_ID,  DataSet.get(getPosition()));
-                        context2.startActivity(intent);*/
+                       Context context2 = v.getContext();
+                        Intent intent = new Intent(context2, MainActivity.class);
+                        intent.putExtra("Photographer", (Serializable) DataSet.get(getPosition()));
+                        context2.startActivity(intent);
 
                 }
             });

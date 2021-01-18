@@ -12,14 +12,23 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_wedding"
         android:name="com.example.myapplication.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="Wedding"
         tools:layout="@layout/fragment_dashboard" />
-
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_graduation"
         android:name="com.example.myapplication.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="Graduation"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_birthdate"
+        android:name="com.example.myapplication.BirthDateFragment"
+        android:label="BirthDate"
+        tools:layout="@layout/fragment_birth_date" />
+    <fragment
+        android:id="@+id/navigation_other"
+        android:name="com.example.myapplication.OtherFragment"
+        android:label="Other"
+        tools:layout="@layout/fragment_other" />
 </navigation>

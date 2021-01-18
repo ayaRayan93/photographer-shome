@@ -1,26 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".PhotographerListActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.MyApplication.AppBarOverlay">
+        android:background="@color/main"
+        >
 
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/logo" />
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
+            android:layout_margin="5dp"
+            android:textSize="20sp"
+            app:titleTextColor="@color/white"
+            android:theme="@style/Theme.MyApplication.PopupOverlay"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/Theme.MyApplication.PopupOverlay" />
+            android:layout_height="?attr/actionBarSize" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:weightSum="6"
+        android:padding="20dp"
+        >
 
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="50dp"
+            android:ems="15"
+            android:textColor="@color/main"
+            android:background="@color/textbc"
+            android:inputType="textPersonName"
+            android:padding="2dp"
+            android:hint="Search by Name" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:background="@color/searchbc"
+            app:srcCompat="@drawable/search" />
+
+    </LinearLayout>
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
@@ -30,4 +69,4 @@
         <include layout="@layout/photographer_list" />
     </FrameLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

@@ -1,6 +1,8 @@
 package com.example.myapplication.model;
 
-public class Photographer {
+import java.io.Serializable;
+
+public class Photographer implements Serializable {
 
     String Photographer_ID,PhotographerName,Location,Facebook,Behance,WhatsApp,Instagram,ProfileImage;
 

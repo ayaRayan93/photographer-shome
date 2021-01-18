@@ -10,7 +10,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
+
+import static com.example.myapplication.MainActivity.photographer;
 
 public class HomeFragment extends Fragment {
 
@@ -18,16 +22,16 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        TextView face=root.findViewById(R.id.id_facebook);
+        TextView insta=root.findViewById(R.id.id_insta);
+        TextView behance=root.findViewById(R.id.id_behance);
+        TextView whats=root.findViewById(R.id.id_whats);
+
+        face.setText(photographer.getFacebook());
+        insta.setText(photographer.getInstagram());
+        behance.setText(photographer.getBehance());
+        whats.setText(photographer.getWhatsApp());
         return root;
     }
 }

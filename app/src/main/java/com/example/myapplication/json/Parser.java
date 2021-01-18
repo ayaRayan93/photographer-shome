@@ -1,6 +1,7 @@
 package com.example.myapplication.json;
 
 import com.example.myapplication.model.Photographer;
+import com.example.myapplication.model.PhotographerImage;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,6 +41,38 @@ public class Parser {
                 photographer.setWhatsApp(WhatsApp);
                 photographer.setInstagram(Instagram);
                 photographer.setProfileImage(ProfileImage);
+
+                mPhotographers.add(photographer);
+
+
+            }
+
+            return mPhotographers;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        return null;
+    }
+
+    public static List<PhotographerImage> parseStringToJsonforPhotographerImages(String data) {
+        List<PhotographerImage> mPhotographers;
+
+        try {
+            JSONArray jsonArray =new JSONArray(data);
+            mPhotographers = new ArrayList<>();
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject photographerJsonObject = jsonArray.getJSONObject(i);
+                int Catagory = Integer.parseInt(photographerJsonObject.optString("Catagory"));
+                String Image = photographerJsonObject.optString("Image");
+
+
+                PhotographerImage photographer = new PhotographerImage();
+                photographer.setCatagory(Catagory);
+                photographer.setImage(Image);
 
                 mPhotographers.add(photographer);
 
