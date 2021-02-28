@@ -7,28 +7,28 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.myapplication.ui.home.HomeFragment"
+        android:name="ex.photo.photographershome.ui.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_wedding"
-        android:name="com.example.myapplication.ui.dashboard.DashboardFragment"
+        android:name="ex.photo.photographershome.ui.WeddingFragment"
         android:label="Wedding"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_wedding" />
     <fragment
         android:id="@+id/navigation_graduation"
-        android:name="com.example.myapplication.ui.notifications.NotificationsFragment"
+        android:name="ex.photo.photographershome.ui.GraduationFragment"
         android:label="Graduation"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_wedding" />
     <fragment
         android:id="@+id/navigation_birthdate"
-        android:name="com.example.myapplication.BirthDateFragment"
+        android:name="ex.photo.photographershome.ui.BirthDateFragment"
         android:label="BirthDate"
         tools:layout="@layout/fragment_birth_date" />
     <fragment
         android:id="@+id/navigation_other"
-        android:name="com.example.myapplication.OtherFragment"
+        android:name="ex.photo.photographershome.ui.OtherFragment"
         android:label="Other"
         tools:layout="@layout/fragment_other" />
 </navigation>

@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/main"
             android:text="jjhhhhh"
-            android:textAppearance="?attr/textAppearanceListItem" />
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/content"
@@ -40,8 +40,7 @@
             android:textColor="@color/textfc"
             android:fontFamily="@font/attent"
             android:textSize="20sp"
-            android:text="kkkkk"
-            android:textAppearance="?attr/textAppearanceListItem" />
+            android:text="kkkkk"/>
     </LinearLayout>
 </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

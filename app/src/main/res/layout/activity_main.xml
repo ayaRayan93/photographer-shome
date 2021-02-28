@@ -53,6 +53,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:textSize="28sp"
+
+                        android:layout_marginBottom="5dp"
                         android:text="jjhhhhh"
                      />
                     <TextView
@@ -62,6 +65,7 @@
                         android:text="kkkkk"
                         android:textColor="@color/textfc"
                         android:textSize="20sp"
+                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/attent"
                         />
                 </LinearLayout>

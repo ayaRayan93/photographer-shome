@@ -26,7 +26,6 @@
             android:layout_margin="5dp"
             android:textSize="20sp"
             app:titleTextColor="@color/white"
-            android:theme="@style/Theme.MyApplication.PopupOverlay"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize" />
 
@@ -36,30 +35,54 @@
         android:layout_height="80dp"
         android:orientation="horizontal"
         android:weightSum="6"
+        android:gravity="center_vertical"
         android:padding="20dp"
         >
-
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:padding="5dp"
+            android:background="@color/searchbc"
+            app:srcCompat="@drawable/search" />
         <EditText
             android:id="@+id/editTextTextPersonName"
             android:layout_width="0dp"
-            android:layout_weight="5"
+            android:layout_weight="4"
             android:layout_height="50dp"
             android:ems="15"
             android:textColor="@color/main"
             android:background="@color/textbc"
             android:inputType="textPersonName"
             android:padding="2dp"
+
+            android:gravity="center_vertical"
             android:hint="Search by Name" />
 
+
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/imageView5"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp"
-            android:background="@color/searchbc"
-            app:srcCompat="@drawable/search" />
-
+            android:padding="10dp"
+            android:background="@color/white"
+            app:srcCompat="@drawable/filter12" />
     </LinearLayout>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@color/teal_200"
+        app:chipSpacingHorizontal="4dp">
+
+
+
+
+    </com.google.android.material.chip.ChipGroup>
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"

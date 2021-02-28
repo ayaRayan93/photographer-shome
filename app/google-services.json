@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "494487266244",
+    "project_id": "photographer-s-home",
+    "storage_bucket": "photographer-s-home.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494487266244:android:e0fa40a5bfc9af25143a91",
+        "android_client_info": {
+          "package_name": "ex.photo.photographershome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494487266244-4kl64l87vic49tb2jr5b1t6et1iu9sa9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr8rrCaJn0P5PxJdgunBA516QWUEbA8yo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494487266244-4kl64l87vic49tb2jr5b1t6et1iu9sa9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
