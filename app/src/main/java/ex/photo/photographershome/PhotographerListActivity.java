@@ -65,7 +65,8 @@ public class PhotographerListActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if(chipGroup.getVisibility()==View.VISIBLE)
                     {
-                        chipGroup.setVisibility(View.INVISIBLE);
+                        chipGroup.setVisibility(View.GONE);
+
                     }
                     else
                     {
@@ -103,36 +104,19 @@ public class PhotographerListActivity extends AppCompatActivity {
             });
 
 
-           // initiateRefresh("");
+            initiateRefresh("");
 
             listLocations=new ArrayList<>();
-            listLocations.add("Cairo");
-            listLocations.add("Assuit");
-            listLocations.add("Alexandria ");
-            listLocations.add("Beheira");
-            listLocations.add("Cairo");
-            listLocations.add("Assuit");
-            listLocations.add("Alexandria ");
-            listLocations.add("Beheira");
-            for (int i=0;i<listLocations.size();i++) {
-                Chip chip = new Chip(this);
-                chip.setText(listLocations.get(i));
-                chip.setChipBackgroundColorResource(R.color.white);
-                chip.setCloseIconVisible(false);
-                chip.setTextColor(getResources().getColor(R.color.black));
-                chip.setCheckedIconEnabled(true);
-                chipGroup.addView(chip);
-            }
+
        //     chipGroup.setSingleSelection(false);
             chipGroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
                 @Override
-                public void onCheckedChanged(ChipGroup chipGroup, @IdRes int i) {
-                    Chip chip = chipGroup.findViewById(i);
-                    chipGroup.check(i);
-                   // chip.setChecked(true);
+                public void onCheckedChanged(ChipGroup group, int checkedId) {
+                    chipGroup.check(checkedId);
+                    chipGroup.setBackgroundColor(Color.CYAN);
                 }
             });
-           // locations();
+            locations();
 
         }
         catch(Exception ex)
