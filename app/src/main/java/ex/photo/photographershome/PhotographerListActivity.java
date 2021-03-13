@@ -1,9 +1,12 @@
 package ex.photo.photographershome;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +29,7 @@ import ex.photo.photographershome.model.Photographer;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -47,7 +51,10 @@ public class PhotographerListActivity extends AppCompatActivity {
     protected RecyclerView.LayoutManager mLayoutManager;
     protected List<Photographer> dataSet;
     protected List<String> listLocations;
+    protected List<String> listSelectedLocations;
     ChipGroup chipGroup;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
@@ -59,6 +66,20 @@ public class PhotographerListActivity extends AppCompatActivity {
             toolbar.setTitle(getTitle());
 
             chipGroup = findViewById(R.id.chip_group_main);
+            chipGroup.setVisibility(View.GONE);
+            listLocations=new ArrayList<>();
+            listSelectedLocations=new ArrayList<>();
+            locations();
+            chipGroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(ChipGroup group, int checkedId) {
+                    chipGroup.check(checkedId);
+                    Chip chip= (Chip) chipGroup.getChildAt(checkedId);
+                    chip.getText();
+                    listSelectedLocations.add(chip.getText().toString());
+                    initiateRefresh("",listSelectedLocations);
+                }
+            });
             ImageView imageView=findViewById(R.id.imageView5);
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -99,36 +120,33 @@ public class PhotographerListActivity extends AppCompatActivity {
 
                 @Override
                 public void afterTextChanged(Editable editable) {
-                    initiateRefresh(editable.toString());
+                    initiateRefresh(editable.toString(),listSelectedLocations);
                 }
             });
 
-
-            initiateRefresh("");
-
-            listLocations=new ArrayList<>();
-
-       //     chipGroup.setSingleSelection(false);
-            chipGroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(ChipGroup group, int checkedId) {
-                    chipGroup.check(checkedId);
-                    chipGroup.setBackgroundColor(Color.CYAN);
-                }
-            });
-            locations();
+            initiateRefresh("",listSelectedLocations);
 
         }
         catch(Exception ex)
         {}
     }
 
-    public  void initiateRefresh(String name)
+    public  void initiateRefresh(String name,List<String> listSelectedItems )
     {
         String Url="";
         if(name!="")
         {
             Url="http://ayaalirayan-001-site1.dtempurl.com/PhotographerListSearchByName.php?Name="+name;
+        }
+        else if(listSelectedItems.size()>0)
+        {
+            String str="";
+            for (int i=0;i<listSelectedItems.size()-1;i++)
+            {
+                str+="'"+listSelectedItems.get(i)+"',";
+            }
+            str+="'"+listSelectedItems.get(listSelectedItems.size()-1)+"'";
+            Url="http://ayaalirayan-001-site1.dtempurl.com/searchByLocation.php?LocationList="+str;
         }
         else
         {
@@ -182,14 +200,32 @@ public class PhotographerListActivity extends AppCompatActivity {
                 listLocations.clear();
                  listLocations = Parser.parseStringToJsonforPhotographerLocations(response);
                 for (int i=0;i<listLocations.size();i++) {
-                    Chip chip = new Chip(getBaseContext());
+                    Chip chip = new Chip(PhotographerListActivity.this);
                     chip.setText(listLocations.get(i));
                     chip.setChipBackgroundColorResource(R.color.white);
-                    chip.setCloseIconVisible(true);
+                    chip.setCloseIconVisible(false);
                     chip.setTextColor(getResources().getColor(R.color.black));
+                    chip.setCheckable(true);
+chip.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        chip.getText();
+        if(chip.isChecked()) {
 
-
-                    ChipGroup chipGroup = findViewById(R.id.chip_group_main);
+            listSelectedLocations.add(chip.getText().toString());
+            initiateRefresh("", listSelectedLocations);
+        }
+        else
+        {
+            for (int i=0;i<listSelectedLocations.size();i++)
+            {
+                if(listSelectedLocations.get(i)==chip.getText().toString())
+                    listSelectedLocations.remove(i);
+            }
+            initiateRefresh("", listSelectedLocations);
+        }
+    }
+});
 
                     chipGroup.addView(chip);
                 }
